@@ -171,6 +171,21 @@ public class WordLadderSolverGUI extends JFrame {
 
                 long endTime = System.currentTimeMillis();
 
+                // If you want to know the memory used, use this code
+                // if (path != null) {
+                //     // Calculate memory usage
+                //     Runtime runtime = Runtime.getRuntime();
+                //     long memoryUsedBytes = runtime.totalMemory() - runtime.freeMemory();
+                //     String memoryUsedKB = String.format("%.2f", (double) memoryUsedBytes / 1024);
+                
+                //     resultArea.setText("Path found:\n" + String.join(" -> ", path) +
+                //             "\nNumber of nodes visited: " + path.size() +
+                //             "\nExecution time: " + (endTime - startTime) + " milliseconds" +
+                //             "\nMemory used: " + memoryUsedKB + " kilobytes");
+                // } else {
+                //     resultArea.setText("No path found.");
+                // }
+
                 if (path != null) {
                     resultArea.setText("Path found:\n" + String.join(" -> ", path) +
                             "\nNumber of nodes visited: " + path.size() +

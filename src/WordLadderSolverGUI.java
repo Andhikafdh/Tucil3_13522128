@@ -177,18 +177,21 @@ public class WordLadderSolverGUI extends JFrame {
                 //     Runtime runtime = Runtime.getRuntime();
                 //     long memoryUsedBytes = runtime.totalMemory() - runtime.freeMemory();
                 //     String memoryUsedKB = String.format("%.2f", (double) memoryUsedBytes / 1024);
-                
-                //     resultArea.setText("Path found:\n" + String.join(" -> ", path) +
-                //             "\nNumber of nodes visited: " + path.size() +
-                //             "\nExecution time: " + (endTime - startTime) + " milliseconds" +
+
+                //     List<String> pathWithoutLastElement = path.subList(0, path.size() - 1);
+                //     resultArea.setText("Path found:\n" + String.join(" -> ", pathWithoutLastElement) +
+                //             "\n" + path.get(path.size() - 1) +
+                //             "\nExecution time: " + (endTime - startTime) + " milliseconds" + 
                 //             "\nMemory used: " + memoryUsedKB + " kilobytes");
                 // } else {
                 //     resultArea.setText("No path found.");
                 // }
 
-                if (path != null) {
-                    resultArea.setText("Path found:\n" + String.join(" -> ", path) +
-                            "\nNumber of nodes visited: " + path.size() +
+
+                if (path != null && !path.isEmpty()) {
+                    List<String> pathWithoutLastElement = path.subList(0, path.size() - 1);
+                    resultArea.setText("Path found:\n" + String.join(" -> ", pathWithoutLastElement) +
+                            "\n" + path.get(path.size() - 1) +
                             "\nExecution time: " + (endTime - startTime) + " milliseconds");
                 } else {
                     resultArea.setText("No path found.");

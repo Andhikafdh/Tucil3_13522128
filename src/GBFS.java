@@ -19,11 +19,15 @@ public class GBFS {
         Set<String> visited = new HashSet<>();
         queue.add(new Node(start, null, calculateHeuristic(start, end)));
         visited.add(start);
-
+    
+        int nodesVisited = 0; // Add a counter for nodes visited
+    
         while (!queue.isEmpty()) {
             Node current = queue.poll();
             String currentWord = current.word;
-
+    
+            nodesVisited++; // Increment the counter each time a node is visited
+    
             if (currentWord.equals(end)) {
                 List<String> path = new ArrayList<>();
                 while (current != null) {
@@ -31,9 +35,12 @@ public class GBFS {
                     current = current.parent;
                 }
                 Collections.reverse(path);
+    
+                path.add("Nodes visited: " + nodesVisited); // Add the total nodes visited to the path
+    
                 return path;
             }
-
+    
             StringBuilder wordBuilder = new StringBuilder(currentWord);
             for (int i = 0; i < wordBuilder.length(); i++) {
                 char originalChar = wordBuilder.charAt(i);
@@ -51,8 +58,12 @@ public class GBFS {
                 wordBuilder.setCharAt(i, originalChar); 
             }
         }
-
-        return null; // no path found
+    
+        // If no path found, return the total nodes visited
+        List<String> result = new ArrayList<>();
+        result.add("No path found.");
+        result.add("Nodes visited: " + nodesVisited);
+        return result;
     }
 
     private static int calculateHeuristic(String current, String end) {
